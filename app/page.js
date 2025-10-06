@@ -15,7 +15,7 @@ export default function Home() {
 
   /* Typewriter animation logic */
   useEffect(() => {
-    const words = ["Product Designer", "Web Developer", "UI/UX Designer", ];
+    const words = ["Product Designer", "Web Developer", "UI/UX Designer"];
     const word = words[currentWordIndex];
     const speed = isDeleting ? 50 : 100; // faster erase speed
 
@@ -46,11 +46,34 @@ export default function Home() {
   return (
 <>
     {/* Hero section */}
-    <section className="hero bg-[#040e48] min-h-screen flex items-center justify-center relative">
-      <Image src="/hbg.jpg" width={1000} height={100} className="absolute left-1/2 top-[33px] -translate-x-1/2 -scale-y-100 rounded-[45px]" alt="Hero background" />
+    <section className="hero bg-[#040e48] min-h-screen relative">
+      <div className="absolute left-1/2 top-[60px] -translate-x-1/2 w-[850px] h-[100px]">
+        <Image 
+        src="/hbg.jpg" 
+        width={850} 
+        height={100} 
+        className="rounded-[45px] transform scale-y-[-1] " 
+        alt="Hero background" />
+      </div>
       <h1 className="absolute left-1/2 top-[239px] -translate-x-1/2 -translate-y-1/2 text-white text-[71px] font-normal text-center p-[5px] whitespace-nowrap" style={{ fontFamily: 'var(--font-dm-sans)' }}>Turning bold ideas into<br />real experiences.</h1>
-      <p className="absolute left-1/2 top-[433px] -translate-x-1/2 -translate-y-1/2 text-black text-[24px] font-normal text-center p-[5px] whitespace-nowrap" style={{ fontFamily:  "'Fira Code', monospace" }}>I&#39;m Emmanuel Eromosele - a {currentText}|</p>
-      <button className="absolute left-1/2 top-[510px] -translate-x-1/2 bg-blue-700 hover:bg-blue-900 text-white font-bold py-3 px-6 rounded-lg shadow-lg transition duration-300 border border-white">Work with me</button>
+      <p className="absolute left-1/2 top-[400px] -translate-x-1/2 -translate-y-1/2 text-black text-[22px] font-normal text-center p-[5px] whitespace-nowrap" style={{ fontFamily:  "'Fira Code', monospace" }}>I&#39;m Emmanuel Eromosele - a {currentText}|</p>
+     
+      <button className="
+        absolute left-1/2 top-[480px] -translate-x-1/2 -translate-y-1/2 z-10
+        bg-blue-800
+        text-white font-bold py-3 px-6 rounded-full
+        whitespace-nowrap
+        shadow-[0_8px_30px_rgba(0,0,0,0.25),0_2px_4px_rgba(0,0,0,0.15),inset_0_2px_8px_rgba(255,255,255,0.15)]
+        border-1 border-white
+        relative
+        before:content-[''] before:absolute before:inset-0 before:rounded-full before:bg-gradient-to-b before:from-white/40 before:to-transparent before:pointer-events-none
+        after:content-[''] after:absolute after:top-2 after:left-2 after:right-2 after:h-2 after:rounded-full after:bg-white/30 after:blur-sm after:opacity-70 after:pointer-events-none
+        transform transition duration-300 
+        hover:scale-110 active:scale-90">
+        Book a Call
+      </button>
+
+
     </section>
     {/* Tech Stack section */}
     <section className="tech-stack bg-[#040e48] text-white py-16 px-4">
@@ -85,7 +108,7 @@ export default function Home() {
       <div className="container py-20 px-4 flex-1 flex flex-col md:flex-row items-center justify-center">
         <div className="relative flex-shrink-0 translate-x-5 ml-10">
           <Image src="/hbg.jpg" width="500" height="319" alt="Core Values Background" className="rounded-[45px]" />
-          <Image src="/hbg.jpg" width="500" height="319" alt="Duplicate Core Values Background" className="absolute right-[-50px] top-[45px] rounded-[45px] z-[1] object-contain" />
+          <Image src="/hbg.jpg" width="500" height="319" alt="Background overlay" className="absolute right-[-50px] top-[45px] rounded-[45px] z-[1] object-contain" />
           <Image src="/rocket.png" width="256" height="256" alt="Rocket image" className="absolute left-[172px] top-[60px] z-[1] object-contain" />
         </div>
         <div className="text-left md:text-left flex-1 ml-40 translate-y-8">
@@ -98,8 +121,8 @@ export default function Home() {
       <div className="container py-20 px-6 flex-1 flex flex-col md:flex-row-reverse items-center justify-start md:ml-[-7rem]">
         <div className="relative flex-shrink-0 translate-x-0 ml-10">
           <Image src="/hbg.jpg" width="500" height="319" alt="Core Values Background" className="rounded-[45px] transform scale-x-[-1]" />
-          <Image src="/hbg.jpg" width="500" height="319" alt="Duplicate Core Values Background" className="absolute right-[-50px] top-[45px] rounded-[45px] z-[1] object-contain [45px] transform scale-x-[-1]" />
-          <Image src="/setting.png" width="256" height="256" alt="Rocket image" className="absolute right-[80px] top-[60px] z-[1] object-contain" />
+          <Image src="/hbg.jpg" width="500" height="319" alt="Background overlay" className="absolute right-[-50px] top-[45px] rounded-[45px] z-[1] object-contain transform scale-x-[-1]" />
+          <Image src="/setting.png" width="256" height="256" alt="Settings icon" className="absolute right-[80px] top-[60px] z-[1] object-contain" />
         </div>
         <div className="text-left md:text-left flex-1 ml-40 translate-y-8">
           <p className="text-[45px] font-normal text-[#c1c6e2]" style={{ fontFamily: "'Fira Code', monospace" }}>
@@ -111,8 +134,8 @@ export default function Home() {
       <div className="container py-20 px-4 flex-1 flex flex-col md:flex-row items-center justify-center">
         <div className="relative flex-shrink-0 translate-x-5 ml-10">
           <Image src="/hbg.jpg" width="500" height="319" alt="Core Values Background" className="rounded-[45px]" />
-          <Image src="/hbg.jpg" width="500" height="319" alt="Duplicate Core Values Background" className="absolute right-[-50px] top-[45px] rounded-[45px] z-[1] object-contain" />
-          <Image src="/handshake.png" width="256" height="256" alt="Rocket image" className="absolute right-[80px] top-[60px] z-[1] object-contain" />
+          <Image src="/hbg.jpg" width="500" height="319" alt="Background overlay" className="absolute right-[-50px] top-[45px] rounded-[45px] z-[1] object-contain" />
+          <Image src="/handshake.png" width="256" height="256" alt="Handshake icon" className="absolute right-[80px] top-[60px] z-[1] object-contain" />
         </div>
         <div className="text-left md:text-left flex-1 ml-40 translate-y-8">
           <p className="text-[45px] font-normal text-[#c1c6e2]" style={{ fontFamily: "'Fira Code', monospace" }}>
