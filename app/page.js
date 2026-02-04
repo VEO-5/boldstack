@@ -17,27 +17,31 @@ export default function Home() {
   useEffect(() => {
     const words = ["Product Designer", "Web Developer", "UI/UX Designer"];
     const word = words[currentWordIndex];
-    const speed = isDeleting ? 50 : 100; // faster erase speed
+    const isComplete = currentText.length === word.length;
+    const isEmpty = currentText.length === 0;
+    const delay = !isDeleting && isComplete ? 2000 : isDeleting ? 50 : 100;
 
     const timeout = setTimeout(() => {
-      if (!isDeleting) {
-        // typing
-        if (currentText.length < word.length) {
-          setCurrentText(word.slice(0, currentText.length + 1));
-        } else {
-          // pause before deleting
-          setTimeout(() => setIsDeleting(true), 2000);
-        }
-      } else {
-        // erasing
-        if (currentText.length > 0) {
-          setCurrentText(currentText.slice(0, -1));
-        } else {
-          setIsDeleting(false);
-          setCurrentWordIndex((prev) => (prev + 1) % words.length);
-        }
+      if (!isDeleting && !isComplete) {
+        setCurrentText(word.slice(0, currentText.length + 1));
+        return;
       }
-    }, speed);
+
+      if (!isDeleting && isComplete) {
+        setIsDeleting(true);
+        return;
+      }
+
+      if (isDeleting && !isEmpty) {
+        setCurrentText(currentText.slice(0, -1));
+        return;
+      }
+
+      if (isDeleting && isEmpty) {
+        setIsDeleting(false);
+        setCurrentWordIndex((prev) => (prev + 1) % words.length);
+      }
+    }, delay);
 
     return () => clearTimeout(timeout);
   }, [currentWordIndex, currentText, isDeleting]);
